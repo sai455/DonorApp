@@ -1,0 +1,325 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<style>
+    .panel-fullscreen {
+        display: block;
+        z-index: 9999;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        overflow: auto;
+    }
+
+    span {
+        margin-left: 10px;
+    }
+</style>
+<section class="content-header">
+    <h1>
+        Donar Dashboard
+
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Donar Dashboard</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="col-lg-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading text-center">Satram</div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <tr>
+                        <td>
+                            <label>
+                                <input type="radio" name="r3" value="1" class="flat-red" checked>
+                                <span>వారణాసి</span>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>
+                                <input type="radio" name="r3" value="2" class="flat-red">
+                                <span>శ్రీశైలం</span>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>
+                                <input type="radio" name="r3" value="3" class="flat-red">
+                                <span>భద్రాచలం</span>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>
+                                <input type="radio" name="r3" value="4" class="flat-red">
+                                <span>షిర్డీ</span>
+                            </label>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="box box-solid bg-green-gradient">
+            <div class="box-header">
+                <i class="fa fa-calendar"></i>
+
+                <h3 class="box-title">Calendar</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+                <div id="calendar" style="width: 100%"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading text-center">Panchangam</div>
+            <div class="panel-body">
+                <table class="table table-bordered">
+                    <tr>
+                        <td class="txtBold">Date</td>
+                        <td id='idDate' class="alignR"></td>
+                    </tr>
+
+                    <tr>
+                        <td class="txtBold">Tithi</td>
+                        <td id=tithi class="alignR"></td>
+                    </tr>
+                    <tr>
+                        <td class="txtBold">Nakshtra</td>
+                        <td id='nakshtra' class="alignR"></td>
+                    </tr>
+
+                    <tr>
+                        <td class="txtBold">Raasi</td>
+                        <td id='raasi' class="alignR"></td>
+                    </tr>
+                    <tr>
+                        <td class="txtBold">Masamu</td>
+                        <td id='masamu' class="alignR"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-12">
+        <div class="box table-box box-primary">
+            <div class="box-header text-center">
+                <h3 class="box-title">అన్నదానం చేయించు దాతల వివరములు </h3>
+                <a href="#" class="pull-right" id="panel-fullscreen" role="button" title="Toggle fullscreen"><i class="glyphicon glyphicon-resize-full"></i></a>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <table id="example1" class="table table-bordered table-striped table-responsive" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th class="bg-blue-gradient">Donation For</th>
+                            <th class="bg-blue-gradient">Donation By</th>
+                            <th class="bg-blue-gradient">Relation</th>
+                            <th class="bg-blue-gradient">Address / Contact No.</th>
+                            <th class="bg-blue-gradient">Donation Date</th>
+                            <th class="bg-blue-gradient">Amount</th>
+                            <th class="bg-blue-gradient">Purpose/Occasion</th>
+                            <th class="bg-blue-gradient">Thidi</th>
+                            <th class="bg-blue-gradient"></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                    <tfoot>
+                        <tr>
+                            <th class="bg-blue-gradient">Donation For</th>
+                            <th class="bg-blue-gradient">Donation By</th>
+                            <th class="bg-blue-gradient">Relation</th>
+                            <th class="bg-blue-gradient">Address / Contact No.</th>
+                            <th class="bg-blue-gradient">Donation Date</th>
+                            <th class="bg-blue-gradient">Amount</th>
+                            <th class="bg-blue-gradient">Purpose/Occasion</th>
+                            <th class="bg-blue-gradient">Thidi</th>
+                            <th class="bg-blue-gradient"></th>
+                        </tr>
+
+                    </tfoot>
+                </table>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </div>
+</section>
+
+<div class="modal fade" id="modal-default">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Copy Content To Send Mail</h4>
+            </div>
+            <div class="modal-body">
+                <p>Put Content to Send Mail</p>
+            </div>
+        </div>
+            <!-- /.modal-content -->
+        </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+<script src="~/Content/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="~/Content/panchang.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    var table;
+    var selectedData = [];
+    var selectedSatramId = 1;
+    $(document).ready(function () {
+        $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+            checkboxClass: 'icheckbox_flat-green',
+            radioClass: 'iradio_flat-green'
+        });
+
+        $('input[type="radio"].flat-red').on('ifClicked', function (event) {
+            selectedSatramId = event.target.value;
+            GetDonarData();
+        });
+
+        $('#calendar').datepicker({
+            format: 'mm/dd/yyyy',
+        }).on('changeDate', function (e) {
+            drawPanchang(e.date);
+        });
+    });
+
+    $("#panel-fullscreen").click(function (e) {
+        e.preventDefault();
+
+        var $this = $(this);
+
+        if ($this.children('i').hasClass('glyphicon-resize-full')) {
+            $this.children('i').removeClass('glyphicon-resize-full');
+            $this.children('i').addClass('glyphicon-resize-small');
+
+        }
+        else if ($this.children('i').hasClass('glyphicon-resize-small')) {
+            $this.children('i').removeClass('glyphicon-resize-small');
+            $this.children('i').addClass('glyphicon-resize-full');
+        }
+        $(this).closest('.table-box').toggleClass('panel-fullscreen');
+        fullscreen();
+    });
+    function fullscreen() {
+        if ((document.fullScreenElement && document.fullScreenElement !== null) ||
+            (!document.mozFullScreen && !document.webkitIsFullScreen)) {
+            if (document.documentElement.requestFullScreen) {
+                document.documentElement.requestFullScreen();
+            } else if (document.documentElement.mozRequestFullScreen) {
+                document.documentElement.mozRequestFullScreen();
+            } else if (document.documentElement.webkitRequestFullScreen) {
+                document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+            }
+        } else {
+            if (document.cancelFullScreen) {
+                document.cancelFullScreen();
+            } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            } else if (document.webkitCancelFullScreen) {
+                document.webkitCancelFullScreen();
+            }
+        }
+    }
+
+    function drawPanchang(t) {
+        var str = t;
+        panchang.calculate(t, function () {
+            selectedData = [];
+            document.getElementById("idDate").innerHTML = str.getDate() + " - " + (parseInt(str.getMonth()) + 1) + " - " + str.getFullYear();
+            document.getElementById("tithi").innerHTML = panchang.Tithi.name;
+            document.getElementById("nakshtra").innerHTML = panchang.Nakshatra.name;
+            document.getElementById("raasi").innerHTML = panchang.Raasi.name;
+            selectedData.push({
+                date: t,
+                displayDate: document.getElementById("idDate").innerHTML,
+                tithi: document.getElementById("tithi").innerHTML,
+                nakshtram: document.getElementById("nakshtra").innerHTML,
+                raasi: document.getElementById("raasi").innerHTML
+            })
+        });
+        getMonth(t);
+    }
+
+    function getMonth(date) {
+        document.getElementById("masamu").innerHTML = '';
+        $.post("/Calender/GetMonthInformation/",
+            {
+                date: date.toLocaleDateString()
+            },
+            function (data) {
+                document.getElementById("masamu").innerHTML = data._fieldValues[11];
+                GetDonarData();
+            });
+    }
+
+    function GetDonarData() {
+        if (selectedSatramId != 0 && selectedData.length > 0) {
+            BindGrid();
+        }
+    }
+
+    function BindGrid() {
+        if (table == undefined) {
+            table = $('#example1').DataTable({
+                'autoWidth': true,
+                "bDestroy": true,
+                "retrieve": true,
+                "ajax": {
+                    "url": "/Calender/GetDonarCalenderData/",
+                    "type": "POST",
+                    "data": function (d) {
+                        d.date = selectedData[0].date.toLocaleDateString();
+                        d.masam = document.getElementById("masamu").innerHTML;
+                        d.tithi = document.getElementById("tithi").innerHTML;
+                        d.satramId = selectedSatramId;
+                    },
+                    'processing': true
+                },
+                "columns": [
+                    { "data": "DonationFor" },
+                    { "data": "DonationBy" },
+                    { "data": "Relation" },
+                    { "data": "Address" },
+                    { "data": "DonationDate" },
+                    { "data": "Amount" },
+                    { "data": "Purpose" },
+                    { "data": "Thidi" },
+                    { "data": "EditInfo" }
+                ],
+                'sDom': "<'dt-toolbar row'<'col-sm-8 col-xs-12'<'toolbar'>><'col-sm-4 col-xs-12 text-right'f>>"
+                    + "t" +
+                    "<'dt-toolbar-footer'<'col-sm-6 col-xs-12'i><'col-xs-12 col-sm-6'p>>"
+            });
+        } else {
+            table.ajax.reload();
+        }
+    }
+
+    function PrintModal(id) {
+        $('#modal-default').modal('show');
+    }
+
+
+</script>

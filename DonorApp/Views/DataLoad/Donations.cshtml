@@ -1,0 +1,247 @@
+﻿
+@{
+    ViewBag.Title = "Donations";
+}
+
+<section class="content-header">
+    <h1>
+        &nbsp;
+
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Donation Entry</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Donar Details</h3>
+                    <div class="pull-right box-tools">
+                        <button type="button" class="btn btn-primary btn-sm btn-flat" onclick="addEditModal(-1)">
+                            <i class="fa fa-plus"></i>&nbsp; Add New Donar Details
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-striped table-responsive" style="width:100%;">
+                        <thead>
+                            <tr>
+                                <th class="bg-light-blue-gradient">Satram</th>
+                                <th class="bg-light-blue-gradient">Donation For</th>
+                                <th class="bg-light-blue-gradient">Donation By</th>
+                                <th class="bg-light-blue-gradient">Relation</th>
+                                <th class="bg-light-blue-gradient">Date</th>
+                                <th class="bg-light-blue-gradient">Amount</th>
+                                <th class="bg-light-blue-gradient">Occasion</th>
+                                <th class="bg-light-blue-gradient">Thidi</th>
+                                <th class="bg-light-blue-gradient"></th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                        <tfoot>
+                            <tr>
+                                <th class="bg-light-blue-gradient">Satram</th>
+                                <th class="bg-light-blue-gradient">Donation For</th>
+                                <th class="bg-light-blue-gradient">Donation By</th>
+                                <th class="bg-light-blue-gradient">Relation</th>
+                                <th class="bg-light-blue-gradient">Date</th>
+                                <th class="bg-light-blue-gradient">Amount</th>
+                                <th class="bg-light-blue-gradient">Occasion</th>
+                                <th class="bg-light-blue-gradient">Thidi</th>
+                                <th class="bg-light-blue-gradient"></th>
+                            </tr>
+
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<div class="modal fade" id="modal-default">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <form role="form" id="donarForm">
+                <div class="modal-body">
+                    <div class="row">
+                        <input type="hidden" id="id" value="-1" />
+                        <div class="form-group col-xs-6">
+                            <label for="exampleInputEmail1">Satram / సత్రం</label>
+                            <select class="form-control" name="Satram" required>
+                                <option value="వారణాసి">వారణాసి</option>
+                                <option value="శ్రీశైలం">శ్రీశైలం</option>
+                                <option value="భద్రాచలం">భద్రాచలం</option>
+                                <option value="షిర్డీ">షిర్డీ</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label for="exampleInputEmail1">Donation By / విరాళం ఇచ్చువారు</label>
+                            <input type="text" class="form-control" name="DonationBy" placeholder="Donation By" required>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label for="exampleInputEmail1">Donation For / విరాళం కోసం</label>
+                            <input type="text" class="form-control" name="DonationFor" placeholder="Donation For" required>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label for="exampleInputEmail1">Relation / సంబంధం</label>
+                            <input type="text" class="form-control" name="Relation" placeholder="Relation">
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label for="exampleInputEmail1">Occasion / సందర్భంగా</label>
+                            <input type="text" class="form-control" name="Purpose" placeholder="Purpose / Occasion" required>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label for="exampleInputEmail1">Annadanam Date / అన్నదానం తేదీ</label>
+                            <input type="date" class="form-control" name="DonationDate" placeholder="Annadanam Date">
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label for="exampleInputEmail1">Thidi / తిది</label>
+                            <input type="text" class="form-control" name="Thidi" placeholder="Thidi">
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label for="exampleInputEmail1">
+                                Amount /
+                                విరాళం మొత్తం
+                            </label>
+                            <input type="number" class="form-control" name="Amount" placeholder="Amount" required>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label for="exampleInputEmail1">Contact No.</label>
+                            <input type="number" maxlength="11" class="form-control" name="PhoneNo" placeholder="Contact No" required>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label for="exampleInputEmail1">EmailId</label>
+                            <input type="email"  class="form-control" name="EmailId" placeholder="Email Id">
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label for="exampleInputEmail1">Address</label>
+                            <textarea cols="3" rows="3" class="form-control" name="Address" placeholder="Address" required></textarea>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger pull-left btn-flat" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success pull-left btn-flat">Save changes</button>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    var table;
+    $(document).ready(function () {
+        BindDonarGrid();
+    });
+
+    function BindDonarGrid() {
+        if (table == undefined) {
+            table = $('#example1').DataTable({
+                'autoWidth': true,
+                "bDestroy": true,
+                "retrieve": true,
+                "order": [],
+                "ajax": {
+                    "url": "/DataLoad/GetDonarGridInformation/",
+                    "type": "Get",
+                    "data": function (d) {
+                    },
+                    'processing': true
+                },
+                "columns": [
+                    { "data": "Satram" },
+                    { "data": "DonationFor" },
+                    { "data": "DonationBy" },
+                    { "data": "Relation" },
+                    { "data": "DonationDate" },
+                    { "data": "Amount" },
+                    { "data": "Purpose" },
+                    { "data": "Thidi" },
+                    { "data": "EditInfo" }
+                ],
+
+            });
+        } else {
+            table.ajax.reload();
+        }
+    }
+    function addEditModal(id) {
+        $('#donarForm')[0].reset();
+        $('#id').val(id);
+        $('#modal-default').modal('show');
+        if (id == -1) {
+            $('.modal-title').html("Add Donation Information");
+        } else {
+
+            $('.modal-title').html("Edit Donation Information");
+            $.get("/DataLoad/GetDonarDetailsById/",
+                {
+                    Id: id
+                },
+                function (data) {
+                    $('select[name="Satram"]').val(data.Satram)
+                    $('input[name="DonationFor"]').val(data.DonationFor);
+                    $('input[name="DonationBy"]').val(data.DonationBy);
+                    $('input[name="Relation"]').val(data.Relation);
+                    $('textarea[name="Address"]').val(data.Address);
+                    $('input[name="PhoneNo"]').val(data.PhoneNo);
+                    $('input[name="DonationDate"]').val(data.DonationDate);
+                    $('input[name="Amount"]').val(data.Amount);
+                    $('input[name="Purpose"]').val(data.Purpose);
+                    $('input[name="Thidi"]').val(data.Thidi);
+                    $('input[name="EmailId"]').val(data.EmailId);
+                });
+        }
+    }
+    $('#donarForm').submit(function (e) {
+         e.preventDefault();
+        var param = {};
+        param.Id = $('#id').val();
+        param.Satram = $('select[name="Satram"]').val()
+        param.DonationFor = $('input[name="DonationFor"]').val();
+        param.DonationBy = $('input[name="DonationBy"]').val();
+        param.Relation = $('input[name="Relation"]').val();
+        param.Address = $('textarea[name="Address"]').val();;
+        param.PhoneNo = $('input[name="PhoneNo"]').val();
+        param.DonationDate = $('input[name="DonationDate"]').val();
+        param.Amount = $('input[name="Amount"]').val();
+        param.Purpose = $('input[name="Purpose"]').val();
+        param.Thidi = $('input[name="Thidi"]').val();
+        param.EmailId= $('input[name="EmailId"]').val();
+
+        $.ajax({
+            url: "/DataLoad/SaveDonarDetails",
+            type: 'post',
+            dataType: 'json',
+            contentType: 'application/json',
+            data: JSON.stringify(param),
+            success: function (data) {
+                if (data = true) {
+                    $('#modal-default').modal('hide');
+                    BindDonarGrid();
+                }
+            }
+        });
+    });
+</script>
+
+

@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+    <section class="content">
+        <div class="col-lg-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading text-center">Upload Thidi Master</div>
+                <div class="panel-body">
+
+                    @using (Html.BeginForm("LoadThidiMaster", "Dataload", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+
+                        <table class="table table-responsive table-striped">
+                            <tr>
+                                <td>
+                                    <input type="file" class="" name="UploadedThidiFile" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <input type="submit" class="btn btn-primary btn-block" name="Submit" value="Upload Thidi Master" />
+                                </td>
+                            </tr>
+                        </table>
+                    }
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading text-center">Upload Month Master</div>
+                <div class="panel-body">
+
+                    @using (Html.BeginForm("LoadMonthMaster", "Dataload", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+
+                        <table class="table table-responsive table-striped">
+                            <tr>
+                                <td>
+                                    <input type="file" class="" name="UploadedMonthFile" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <input type="submit" class="btn btn-primary btn-block" name="Submit" value="Upload Month Master" />
+                                </td>
+                            </tr>
+                        </table>
+                    }
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading text-center">Upload Donar Details</div>
+                <div class="panel-body">
+
+                    @using (Html.BeginForm("LoadDonarDetails", "Dataload", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+
+                        <table class="table table-responsive table-striped">
+                            <tr>
+                                <td>
+                                    <input type="file" class="" name="UploadedDonarDetailsFile" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <input type="submit" class="btn btn-primary btn-block" name="Submit" value="Upload Donar Details" />
+                                </td>
+                            </tr>
+                        </table>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </section>
