@@ -39,7 +39,7 @@ namespace DonorApp.Controllers
                 {
                     satram = "శ్రీశైలం";
                 }
-                else if (satramId == 2)
+                else if (satramId == 3)
                 {
                     satram = "భద్రాచలం";
                 }
@@ -66,7 +66,7 @@ namespace DonorApp.Controllers
                 DonationBy = x.DonationBy,
                 Relation = x.Relation,
                 Address = x.Address,
-                DonationDate = x.DonationDate.HasValue ? x.DonationDate.Value.ToString("dd-MM-yyyy") : string.Empty,
+                DonationDate = x.DonationDate.HasValue ? x.DonationDate.Value.ToString("MMMM-dd") : string.Empty,
                 Amount = GetFormatedAmount(x.Amount),
                 Purpose = x.Purpose,
                 Thidi = string.IsNullOrEmpty(x.Thidi) ? " " : x.Thidi,
