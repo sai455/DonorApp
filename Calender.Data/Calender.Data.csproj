@@ -68,6 +68,7 @@
     <Compile Include="Calender.cs" />
     <Compile Include="CityData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Win32Processes.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

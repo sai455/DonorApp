@@ -130,10 +130,10 @@
                             <th class="bg-blue-gradient">Donation For</th>
                             <th class="bg-blue-gradient">Donation By</th>
                             <th class="bg-blue-gradient">Relation</th>
-                            <th class="bg-blue-gradient">Address / Contact No.</th>
-                            <th class="bg-blue-gradient">Donation Date</th>
-                            <th class="bg-blue-gradient">Amount</th>
-                            <th class="bg-blue-gradient">Purpose/Occasion</th>
+                            <th class="bg-blue-gradient">Address</th>
+                            <th class="bg-blue-gradient">Annadanam Date</th>
+                            <th class="bg-blue-gradient">Donation(Rs)</th>
+                            <th class="bg-blue-gradient">Occasion</th>
                             <th class="bg-blue-gradient">Thidi</th>
                             <th class="bg-blue-gradient"></th>
                         </tr>
@@ -144,10 +144,10 @@
                             <th class="bg-blue-gradient">Donation For</th>
                             <th class="bg-blue-gradient">Donation By</th>
                             <th class="bg-blue-gradient">Relation</th>
-                            <th class="bg-blue-gradient">Address / Contact No.</th>
-                            <th class="bg-blue-gradient">Donation Date</th>
-                            <th class="bg-blue-gradient">Amount</th>
-                            <th class="bg-blue-gradient">Purpose/Occasion</th>
+                            <th class="bg-blue-gradient">Address</th>
+                            <th class="bg-blue-gradient">Annadanam Date</th>
+                            <th class="bg-blue-gradient">Donation(Rs)</th>
+                            <th class="bg-blue-gradient">Occasion</th>
                             <th class="bg-blue-gradient">Thidi</th>
                             <th class="bg-blue-gradient"></th>
                         </tr>
@@ -162,20 +162,35 @@
 </section>
 
 <div class="modal fade" id="modal-default">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-md">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">Copy Content To Send Mail</h4>
+                <h4 class="modal-title text-center">Copy Content & Send Mail To &nbsp; EmailId:&nbsp; <span id="emailId" style="font-weight:bold"></span>&nbsp;</h4>
             </div>
-            <div class="modal-body">
-                <p>Put Content to Send Mail</p>
+            <div class="modal-body" id="copyTarget">
+                @*<span class="pull-right" style="cursor:pointer" onclick="copyText()"><i class="fa fa-clone" aria-hidden="true">&nbsp; Click To Copy</i></span>*@
+                <p>To</p>
+                <p>Sir/Madam,</p>
+                <p>On behalf of Kshatriya Seva Sangham, Buddham we thank you for your generous donations for </p>
+                <p>annadanam at our <span id="branchName" style="font-weight:bold"></span>&nbsp; branch Choultry. As per your request we are providing </p>
+                <p>annadanam on Date <span id="annadamDate" style="font-weight:bold"></span>&nbsp;  or thidhi <span id="annadanamThidi" style="font-weight:bold"></span> &nbsp; every year and writing the </p>
+                <p>details on the display board at our Choultry. </p>
+                <p>
+                    We appreciate your good will gesture of donating for conducting annadanam at our choultries which<br />
+                    is a noble cause and will inspire other pilgrims for extending their support in the same manner which<br />
+                    enables our management to go ahead with the annadanam which is one of the main aim and<br />
+                    objective of our organization.
+                </p>
+                <p>Once again thanks for your support.</p>
+                <p>Regards</p>
+                <p>Kshatriya Seva sangham, Buddham</p>
             </div>
         </div>
-            <!-- /.modal-content -->
-        </div>
+        <!-- /.modal-content -->
+    </div>
     <!-- /.modal-dialog -->
 </div>
 
@@ -317,9 +332,90 @@
         }
     }
 
-    function PrintModal(id) {
+    function PrintModal(annadamDate, branchName, annadanamThidi, emailid) {
+         document.getElementById("emailId").innerHTML = '';
+        document.getElementById("branchName").innerHTML = '';
+        document.getElementById("annadamDate").innerHTML = '';
+        document.getElementById("annadanamThidi").innerHTML = '';
+
+        document.getElementById("emailId").innerHTML = emailid;
+         document.getElementById("branchName").innerHTML = branchName;
+        document.getElementById("annadamDate").innerHTML = annadamDate;
+        document.getElementById("annadanamThidi").innerHTML = annadanamThidi;
         $('#modal-default').modal('show');
+       
+
+    }
+    function copyText() {
+       copyToClipboardMsg(document.getElementById("copyTarget"), "msg");
     }
 
+
+    function copyToClipboardMsg(elem, msgElem) {
+        var succeed = copyToClipboard(elem);
+        var msg;
+        if (!succeed) {
+            msg = "Copy not supported or blocked.  Press Ctrl+c to copy."
+        } else {
+            msg = "Text copied to the clipboard."
+        }
+        if (typeof msgElem === "string") {
+            msgElem = document.getElementById(msgElem);
+        }
+        msgElem.innerHTML = msg;
+        setTimeout(function () {
+            msgElem.innerHTML = "";
+        }, 2000);
+    }
+
+    function copyToClipboard(elem) {
+        // create hidden text element, if it doesn't already exist
+        var targetId = "_hiddenCopyText_";
+        var isInput = elem.tagName === "INPUT" || elem.tagName === "TEXTAREA";
+        var origSelectionStart, origSelectionEnd;
+        if (isInput) {
+            // can just use the original source element for the selection and copy
+            target = elem;
+            origSelectionStart = elem.selectionStart;
+            origSelectionEnd = elem.selectionEnd;
+        } else {
+            // must use a temporary form element for the selection and copy
+            target = document.getElementById(targetId);
+            if (!target) {
+                var target = document.createElement("textarea");
+                target.style.position = "absolute";
+                target.style.left = "-9999px";
+                target.style.top = "0";
+                target.id = targetId;
+                document.body.appendChild(target);
+            }
+            target.textContent = elem.textContent;
+        }
+        // select the content
+        var currentFocus = document.activeElement;
+        target.focus();
+        target.setSelectionRange(0, target.value.length);
+
+        // copy the selection
+        var succeed;
+        try {
+            succeed = document.execCommand("copy");
+        } catch (e) {
+            succeed = false;
+        }
+        // restore original focus
+        if (currentFocus && typeof currentFocus.focus === "function") {
+            currentFocus.focus();
+        }
+
+        if (isInput) {
+            // restore prior selection
+            elem.setSelectionRange(origSelectionStart, origSelectionEnd);
+        } else {
+            // clear temporary content
+            target.textContent = "";
+        }
+        return succeed;
+    }
 
 </script>

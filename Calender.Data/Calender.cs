@@ -1,6 +1,7 @@
 ﻿using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -75,6 +76,10 @@ namespace Calender.Data
                 if (File.Exists(fileName))
                 {
                     document.Load(fileName);
+                    //using (var stream = File.Open(fileName, FileMode.Open, FileAccess.Write, FileShare.Read))
+                    //{
+                       
+                    //}
                 }
                 else
                 {
@@ -254,6 +259,7 @@ namespace Calender.Data
             }
             catch (Exception e)
             {
+                //List<Process> locks = Win32Processes.GetProcessesLockingFile(fileName);
             }
             return dayResult;
         }

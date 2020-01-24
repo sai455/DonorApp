@@ -7,6 +7,8 @@ using System.Web;
 using System.Web.Mvc;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Data.SqlClient;
+using System.Globalization;
+
 namespace DonorApp.Controllers
 {
     [Authorize]
@@ -223,7 +225,7 @@ namespace DonorApp.Controllers
                 Relation = x.Relation,
                 Address = x.Address,
                 DonationDate = x.DonationDate.HasValue ? string.Format("{0:yyyy-MM-dd}", x.DonationDate.Value) : string.Empty,
-                Amount = x.Amount,
+                Amount = GetFormatedAmount(x.Amount),
                 Purpose = x.Purpose,
                 EmailId=x.EmailId,
                 Thidi = string.IsNullOrEmpty(x.Thidi) ? string.Empty : x.Thidi,
@@ -233,7 +235,15 @@ namespace DonorApp.Controllers
             var jsonData = new { data = from r in retDonarDetails select r };
             return Json(jsonData, JsonRequestBehavior.AllowGet);
         }
-
+        private string GetFormatedAmount(string Amount)
+        {
+            string retVal = string.Empty;
+            double ammountDouble = Convert.ToDouble(Amount);
+            CultureInfo cultureInfo = new CultureInfo("en-IN");
+            string ammountString = string.Format(cultureInfo, "{0:C}", ammountDouble);
+            retVal = ammountString;
+            return retVal;
+        }
         [HttpGet]
         public ActionResult GetDonarDetailsById(int Id)
         {
