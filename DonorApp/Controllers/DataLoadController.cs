@@ -177,6 +177,7 @@ namespace DonorApp.Controllers
                         {
                             
                             DonarDetail t = new DonarDetail();
+                            t.Satram = Convert.ToString((range.Cells[rCnt, 1] as Excel.Range).Value2);
                             t.DonationFor = (string)(range.Cells[rCnt, 2] as Excel.Range).Value2;
                             t.Purpose = Convert.ToString((range.Cells[rCnt, 3] as Excel.Range).Value2);
                             t.DonationBy = (string)(range.Cells[rCnt, 4] as Excel.Range).Value2;
@@ -191,6 +192,11 @@ namespace DonorApp.Controllers
                                 t.DonationDate = cellDate;
                             }
                             t.Amount = Convert.ToString((range.Cells[rCnt, 11] as Excel.Range).Value2);
+                            t.PhoneNo = Convert.ToString((range.Cells[rCnt, 12] as Excel.Range).Value2);
+                            t.EmailId = Convert.ToString((range.Cells[rCnt, 13] as Excel.Range).Value2);
+                            t.CreatedDate = DateTime.Now;
+                            t.ModifiedDate = DateTime.Now;
+
                             donarDetails.Add(t);
                         }
                     }
@@ -249,7 +255,7 @@ namespace DonorApp.Controllers
         {
             var data = _context.DonarDetails.Where(x => x.Id == Id).ToList().Select(x => new DonarGridModel()
             {
-                Satram =x.Satram,
+                Satram =x.Satram.Trim(),
                 DonationFor = x.DonationFor,
                 DonationBy = x.DonationBy,
                 Relation = x.Relation,

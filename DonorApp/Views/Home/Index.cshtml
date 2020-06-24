@@ -172,21 +172,19 @@
             </div>
             <div class="modal-body" id="copyTarget">
                 @*<span class="pull-right" style="cursor:pointer" onclick="copyText()"><i class="fa fa-clone" aria-hidden="true">&nbsp; Click To Copy</i></span>*@
-                <p>To</p>
-                <p>Sir/Madam,</p>
-                <p>On behalf of Kshatriya Seva Sangham, Buddham we thank you for your generous donations for </p>
-                <p>annadanam at our <span id="branchName" style="font-weight:bold"></span>&nbsp; branch Choultry. As per your request we are providing </p>
-                <p>annadanam on Date <span id="annadamDate" style="font-weight:bold"></span>&nbsp;  or thidhi <span id="annadanamThidi" style="font-weight:bold"></span> &nbsp; every year and writing the </p>
-                <p>details on the display board at our Choultry. </p>
+                <p>గౌరవనీయులైన &nbsp;<span id="donarName" style="font-weight:bold"></span>&nbsp;గారికి</p>
+                <p>మా యొక్క  &nbsp;<span id="branchName" style="font-weight:bold"></span>&nbsp; బ్రాంచి ఆన్నదాన సత్రము లో అన్నదానము కొరకు</p>
+                <p>ఉదారముగా విరాళము ఇచ్చినందుకు మీకు ధన్యవాదములు తెలియచేసుకొంటున్నాము. </p>
+                <p>మీరు కోరిన విధముగా తేదీ <span id="annadamDate" style="font-weight:bold"></span>&nbsp;  న లేదా <span id="annadanamMasam" style="font-weight:bold"></span> &nbsp; మాసము శుక్ల/ బహుళ</p>
+                <p>పక్షము&nbsp;<span id="annadanamThidi" style="font-weight:bold"></span> &nbsp;తిధిన శ్రీ / శ్రీమతి <span id="annadanamThidi" style="font-weight:bold"></span> &nbsp;గారి పేరున </p>
+                <p>అన్నదానము జరిపించుచున్నాము. </p>
                 <p>
-                    We appreciate your good will gesture of donating for conducting annadanam at our choultries which<br />
-                    is a noble cause and will inspire other pilgrims for extending their support in the same manner which<br />
-                    enables our management to go ahead with the annadanam which is one of the main aim and<br />
-                    objective of our organization.
+                    మా సత్రముల యొక్క ముఖ్య ఉద్దేశము మరియు లక్ష్యము అన్నిటికంటే గొప్పదైన <br />
+                    అన్నదానము జరిపించుట. ఇట్టి పవిత్ర కార్యమునకు మీరు విరాళములు ఇచ్చుట ద్వారా <br />
+                    మాకు తోడ్పాటు అంధించటమే గాకుండా ఇంకా ఎంతోమందికి ఈ విషయములో <br />
+                    స్పూర్తిదాయకముగా నిలిచినందుకు మీకు ధన్యవాదములు తెలియచేసుకొంటున్నాము.
                 </p>
-                <p>Once again thanks for your support.</p>
-                <p>Regards</p>
-                <p>Kshatriya Seva sangham, Buddham</p>
+                <p>క్షత్రియ సేవా సంఘము, బుద్ధాం </p>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -332,16 +330,23 @@
         }
     }
 
-    function PrintModal(annadamDate, branchName, annadanamThidi, emailid) {
+    function PrintModal(annadamDate, branchName, annadanamThidi, emailid,name,monthName) {
          document.getElementById("emailId").innerHTML = '';
         document.getElementById("branchName").innerHTML = '';
         document.getElementById("annadamDate").innerHTML = '';
         document.getElementById("annadanamThidi").innerHTML = '';
+        document.getElementById("donarName").innerHTML = '';
+        document.getElementById("annadanamMasam").innerHTML = '';
+        
+
+
 
         document.getElementById("emailId").innerHTML = emailid;
          document.getElementById("branchName").innerHTML = branchName;
         document.getElementById("annadamDate").innerHTML = annadamDate;
         document.getElementById("annadanamThidi").innerHTML = annadanamThidi;
+        document.getElementById("donarName").innerHTML = name;
+        document.getElementById("annadanamMasam").innerHTML = monthName;
         $('#modal-default').modal('show');
        
 

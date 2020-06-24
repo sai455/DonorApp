@@ -75,12 +75,14 @@ namespace DonorApp.Controllers
 
             foreach(var s in retDonarDetails)
             {
+                string m=""+(dbMonthData!=null? dbMonthData.TeluguMonth:string.Empty) +"";
+                string name=""+s.DonationBy+"";
                 string a = ""+s.DonationDate+"";
                 string b= "" + satram + "";
-                string c = "" + tithi + "";
+                string c = "" +(dbThidiData!=null? dbThidiData.Thidi_Telugu:string.Empty) + "";
                 string d=""+s.EmailId+"";
 
-                s.EditInfo =String.Format("<i class='fa fa-print' aria-hidden='true' style='cursor:pointer' title='Print Donar Details' onclick='PrintModal(\"{0}\",\"{1}\",\"{2}\",\"{3}\")'></i>", a,b,c,d);
+                s.EditInfo =String.Format("<i class='fa fa-print' aria-hidden='true' style='cursor:pointer' title='Print Donar Details' onclick='PrintModal(\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\")'></i>", a,b,c,d,name,m);
             }
             var jsonData = new { data = from r in retDonarDetails select r };
             return Json(jsonData, JsonRequestBehavior.AllowGet);
